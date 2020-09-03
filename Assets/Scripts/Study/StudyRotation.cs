@@ -2,38 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class StudyRotation : MonoBehaviour
 {
     [SerializeField]
     float _speed = 10.0f;
 
     void Start()
     {
-        // Input Manager에게 혹시 키가 눌리면 이 함수를 실행해 달라고 구독 요청
-        // 혹시라도 내가 다른 데서 신청하고 있다면 끊은 후 다시 추가해 주세요
-        Managers.Input.KeyAction -= OnKeyboard;
-        Managers.Input.KeyAction += OnKeyboard;
+
     }
 
-    void OnKeyboard()
+    float _yAngle = 0.0f;
+    void Update()
     {
+        _yAngle += Time.deltaTime * 100.0f;
+
+        // += delta
+        //transform.Rotate(new Vector3(0.0f, Time.deltaTime * 100.0f, 0.0f));
+
+        //transform.rotation = Quaternion.Euler(new Vector3(0.0f, Time.deltaTime * 100.0f, 0.0f));
+
         if (Input.GetKey(KeyCode.W))
         {
+            //transform.Translate(Vector3.forward * Time.deltaTime * _speed);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), 0.2f);
             transform.position += Vector3.forward * Time.deltaTime * _speed;
         }
         if (Input.GetKey(KeyCode.S))
         {
+            //transform.Translate(Vector3.back * Time.deltaTime * _speed);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.back), 0.2f);
             transform.position += Vector3.back * Time.deltaTime * _speed;
         }
         if (Input.GetKey(KeyCode.A))
         {
+            //transform.Translate(Vector3.left * Time.deltaTime * _speed);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.left), 0.2f);
             transform.position += Vector3.left * Time.deltaTime * _speed;
         }
         if (Input.GetKey(KeyCode.D))
         {
+            //transform.Translate(Vector3.right * Time.deltaTime * _speed);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.right), 0.2f);
             transform.position += Vector3.right * Time.deltaTime * _speed;
         }
