@@ -6,7 +6,20 @@ class Tank
 {
     // 온갖 정보들
     public float speed = 15.0f;
+    //Player player;      // 포함 관계, Nested(중첩된) Prefab(Pre-Fabrication)
 }
+
+class Player
+{
+
+}
+
+class FastTank : Tank
+{
+
+}
+
+
 
 public class StudyPrefab : MonoBehaviour
 {
