@@ -65,6 +65,7 @@ public class TestCollision : MonoBehaviour
         //        Debug.Log($"Raycast Camera @ {hit.collider.gameObject.name}");
         //    }
         //}
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -80,5 +81,6 @@ public class TestCollision : MonoBehaviour
                 Debug.Log($"Raycast Camera @ {hit.collider.gameObject.name}");
             }
         }
+        */
     }
 }
