@@ -9,16 +9,21 @@ public class Managers : MonoBehaviour
 
     InputManager _input = new InputManager();
     ResourceManager _resource = new ResourceManager();
-    public static InputManager Input {  get { return Instance._input; } }
-    public static ResourceManager Resource { get { return Instance._resource; } }
+    SceneManagerEx _scene = new SceneManagerEx();
+    SoundManager _sound = new SoundManager();
+    UIManager _ui = new UIManager();
 
-    // Start is called before the first frame update
+    public static InputManager Input { get { return Instance._input; } }
+    public static ResourceManager Resource { get { return Instance._resource; } }
+    public static SceneManagerEx Scene { get { return Instance._scene; } }
+    public static SoundManager Sound { get { return Instance._sound; } }
+    public static UIManager UI { get { return Instance._ui; } }
+
     void Start()
     {
         Init();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _input.OnUpdate();
@@ -41,6 +46,16 @@ public class Managers : MonoBehaviour
             // 새로운 Scene이 로드될 때 삭제되지 않게끔
             DontDestroyOnLoad(go);
             s_instance = go.GetComponent<Managers>();
+
+            s_instance._sound.Init();
         }
+    }
+
+    public static void Clear()
+    {
+        Input.Clear();
+        Scene.Clear();
+        Sound.Clear();
+        UI.Clear();
     }
 }
